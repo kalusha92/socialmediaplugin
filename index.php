@@ -1,64 +1,28 @@
-/**
-* Plugin Name: Contact form Plugin 
-* Plugin URI: http://contactplugin.com
-* Description: This is a demo plugin developed for teaching purpose 
-* Version: 1.0.0
-* Author: Kaleb Fekadu
-* Author URI: http://kaleb.com
-* License: GPL2
+<?php
+/*
+Plugin Name: Social Feed
+Plugin URI: http://social.com
+Description: Display Twitter and Youtube page on Side Bar.
+Version: 1.0.0
+Author: Kaleb Fekadu
+Author URI: http://kalebfekadu.wordpress.com
 */
 
-
-
-if ( ! defined( 'ABSPATH' ) ) {
-	die( 'Hey , you can not access  this file silly human ' );
+// Exit if accessed directly
+if(!defined('ABSPATH')){
+  exit;
 }
 
-// other way 
-// defined( 'ABSPATH' ) or 	die( 'Hey , you can not access  this file dud ' );
+// Load Scripts
+require_once(plugin_dir_path(__FILE__).'/includes/social-scripts.php');
 
-//other way ...
-// if (function_exists('add_action')){ echo "You can not access this file";}
+// Load Class
+require_once(plugin_dir_path(__FILE__).'/includes/social-class.php');
 
-// The Plugin class 
-class DemoPlugin{
-
-    function activate()
-    {
-    // Register custom PT
-    // Flush 
-    }
-    
-    function deactivate()
-    {
-    // Flush 
-    }
-    
-    function uninstall()
-    {
-    //delete CP , delete tables on DB
-    }
-
-     
-
- 
-
-
-
-}
-if(class_exists('DemoPlugin'))
-{
-    $demoplugin = new DemoPlugin();
+// Register Widget
+function register_twitter(){
+  register_widget('social_Widget');
 }
 
-// Registering Activation 
-register_activation_hook(__FILE__, array( $demoplugin,'activate'));
-
-// Registering De Activation 
-register_deactivation_hook(__FILE__, array( $demoplugin,'deactivate'));
-
-function dp_add_form(){
-    require_once plugin_dir_path(__FILE__)."setting/contact.php";
-}
-
-add_shortcode("form_1", "dp_add_form");
+// Hook in function
+add_action('widgets_init', 'register_twitter');
