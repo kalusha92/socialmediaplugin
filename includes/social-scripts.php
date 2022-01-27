@@ -14,8 +14,6 @@
     wp_enqueue_script('google');
   }
 
-  
-
   add_action('wp_enqueue_scripts', 'social_add_scripts');
 
   

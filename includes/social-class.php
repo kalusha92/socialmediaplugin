@@ -1,6 +1,6 @@
 <?php
 /**
- * Adds Youtube_Subs widget.
+ * Adds Social feed widget.
  */
  class Social_Widget extends WP_Widget {
   
@@ -24,7 +24,7 @@
      * @param array $instance Saved values from database.
      */
     public function widget( $args, $instance ) {
-      echo $args['before_widget']; // Whatever you want to display before widget (<div>, etc)
+      echo $args['before_widget']; 
 
       if ( ! empty( $instance['title'] ) ) {
         echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
@@ -41,7 +41,7 @@
 
       echo '<iframe src="https://www.youtube.com/embed/?listType=user_uploads&list='.$instance['channel'].'" width="480" height="400"></iframe>';
 
-      echo $args['after_widget']; // Whatever you want to display after widget (</div>, etc)
+      echo $args['after_widget']; 
     }
     
   
@@ -71,8 +71,7 @@
   
       ?>
       
-      
-      
+
       <!-- TITLE -->
       <p>
         <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
